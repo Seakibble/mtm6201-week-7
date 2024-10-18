@@ -1,0 +1,8 @@
+<!-- SVGs are wrapped in an SVG tag. If the SVG is included as an image file, you need to include the version and xmlns -->
+<!-- width and height are the size of the svg on in the document - the viewport. viewBox is the x and y of the content inside the svg, and the size of the svg 'canvas'. -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+    width="200" height="300" viewBox="0 0 200 300">
+    <!-- Circle has cx and cy, which are the x and y coordinates of the circle in the viewbox -->
+    <!-- It also has r, which is the radius, and fill which is the colour of the circle. -->
+    <circle cx="20" cy="70" r="50" fill="#BBF7A2" />
+</svg>

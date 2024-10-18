@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTM6201 - Week 7 - SVGs</title>
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <h1>SVGs</h1>
+    <h2>Inculding an SVG with an img tag</h2>
+    <img src="images/myfirst.svg" alt="Graphic of a circle">
+
+    <h2>Including an SVG inline</h2>
+    <svg width="200" height="100" viewBox="0 0 200 100">
+        <circle cx="20" cy="70" r="50" fill="#F7A2BB" />
+    </svg>
+
+    <h2>More SVG elements</h2>
+    <svg width="200" height="200" viewBox="0 0 200 200">
+        <!-- rect has width, height and fill -->
+        <rect width="50" height="40" fill="rgb(200,200,255)" />
+        
+        <!-- rect and many other elements have x and y which are the coordinates the location the shape appears at -->
+        <!-- rect also has rx and ry which apply rounding to the corners -->
+        <rect width="50" height="40" fill="rgb(255,0,155)" 
+            x="80" y="20" rx="15" ry="15"/>
+
+        <!-- lines have an x and y coordinate for the start and end of the line, and a stroke for the colour, stroke-width for the thickness of the line -->
+        <line x1="20" y1="20" x2="100" y2="20"
+            stroke="white" stroke-width="5"/>
+
+        <!-- polyline lets us define multiple points and connect them. We can define the stroke and stroke-width, and we can also define the fill. Both are optional -->
+        <polyline points="0,80 50,80 0,100, 200,100"
+            stroke="grey" stroke-width="5" fill="gold"/>
+
+        <polyline points="0,130 50,130 0,150, 200,150"
+            stroke="grey" stroke-width="5"/>
+
+        <polyline points="0,180 50,180 0,200, 200,200"
+            fill="gold"/>
+    </svg>
+
+    <h2>Polygon vs Polyline</h2>
+    <!-- Polygon uses the same properties as polyline, but creates closed shapes - the start is joined to the end automatically. With Polyline, the shape is left 'open' -->
+    <svg width="200" height="100" viewBox="0 0 200 100"
+        class="shape">
+        <polygon points="0,0 50,50 0,80, 200,50"
+            stroke="grey" stroke-width="5" fill="gold"/>
+    </svg>
+    <svg width="200" height="100" viewBox="0 0 200 100" class="shrink">
+        <polyline points="0,0 50,50 0,80, 200,50"
+            stroke="grey" stroke-width="5" fill="gold"/>
+        <!-- The order of that the elements are displayed is the order they appear in the HTML. z-index will not affect this. This applies to content inside the SVG, but not the SVG itself. So you can use z-index to layer the SVG on or around or under other content as normal. -->
+        <rect x="25" y="25" width="20" height="20" fill="red" />
+    </svg>
+
+    <h2>Groups and defs</h2>
+    <svg width="400" height="200" viewBox="0 0 400 200">
+        <defs>
+            <g id="house">
+                <rect x="50" y="50" width="50" height="50" fill="firebrick" />
+                <polyline points="50,50 75,25 100,50" fill="firebrick" stroke="black" stroke-width="3"/>
+                <rect x="60" y="60" width="10" height="15" fill="black" />
+            </g>
+        </defs>
+
+        <!-- sky -->
+        <rect x="0" y="0" width="400" height="200" fill="skyblue" />
+        <circle cx="300" cy="50" r="20" fill="gold"/>
+        <g class="street">
+            <rect x="0" y="100" width="800" height="100" fill="grey" />
+            
+            <use xlink:href="#house" x="0" y="0" />
+            <use xlink:href="#house" x="100" y="0" />
+            <use xlink:href="#house" x="250" y="0" />
+            <use xlink:href="#house" x="340" y="0" />
+
+        </g>
+    </svg>
+
+    <h2>Text</h2>
+    <svg width="200" height="100" viewBox="0 0 200 100">
+        <text x="10" y="20" fill="tomato" >THIS IS SOME TEXT</text>
+    </svg>
+
+    <h2>Linear Gradiant</h2>
+    <svg width="400" height="100" viewBox="0 0 400 100">
+        <defs>
+            <linearGradient id="colourful">
+                <stop offset="0%" stop-color="#2288aa"/>
+                <stop offset="100%" stop-color="#99cc22"/>
+            </linearGradient>
+        </defs>
+        <rect width="200" height="50" y="50" fill="url(#colourful)"/>
+        <text x="10" y="20" fill="url(#colourful)" >THIS IS A LINEAR GRADIANT</text>
+    </svg>
+</body>
+</html>

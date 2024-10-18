@@ -1,0 +1,39 @@
+body {
+    background: #111;
+    color: #ddd;
+}
+
+/* svg circle {
+    fill: red;
+} */
+svg circle:hover {
+    fill: purple;
+}
+
+svg.shape:hover polygon {
+    fill: green;
+}
+svg.shape polygon:hover {
+    stroke-width: 10;
+}
+
+.shrink {
+    transition: all 1s;
+}
+
+.shrink:hover {
+    transform: scale(0.5) rotate(1turn);
+}
+
+
+.street {
+    transition: transform 3s;
+}
+
+/* svg:hover .street {
+    transform: translateX(-400px);
+} */
+
+svg text {
+    font-family: 'Courier New', Courier, monospace;
+}
