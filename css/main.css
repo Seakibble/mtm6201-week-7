@@ -2,6 +2,9 @@ body {
     background: #111;
     color: #ddd;
 }
+/* Because inline SVGs are basicallly the same as regular HTML, we can apply styles to them and alter their properties with CSS just as we can with HTML. This applies to :hover states, transitions and animations as well. These features give us a lot of control over how the SVG can behave on the page.
+
+Remember though, this only applies to inline SVGs. We can't do this on SVG files included with the img tag!*/
 
 /* svg circle {
     fill: red;

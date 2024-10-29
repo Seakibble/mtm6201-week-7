@@ -10,10 +10,13 @@
 <body>
     <h1>SVGs</h1>
     <h2>Inculding an SVG with an img tag</h2>
+    <!-- SVGs can be included just like other images like PNG and JPG using the img tag. -->
     <img src="images/myfirst.svg" alt="Graphic of a circle">
 
     <h2>Including an SVG inline</h2>
+    <!-- Alternatively, we can define inline. If we do we don't need to include the version or xmlns. -->
     <svg width="200" height="100" viewBox="0 0 200 100">
+        <!-- Here we're creating a circle, with a center-x of 20, a center-y of 70, and a radius of 50. The color is #F7A2BB. There are plenty of other properties to specify, but these are the most simple ones. -->
         <circle cx="20" cy="70" r="50" fill="#F7A2BB" />
     </svg>
 
@@ -58,7 +61,9 @@
 
     <h2>Groups and defs</h2>
     <svg width="400" height="200" viewBox="0 0 400 200">
+        <!-- defs is where we can define templates that the rest of the SVG uses. Anything defined in defs doesn't appear in the code directly. Instead, we can reference these elements by id to display copies of them later on using 'use' -->
         <defs>
+            <!-- g is for group - essentially a div in HTML. it's a container for other SVG elements -->
             <g id="house">
                 <rect x="50" y="50" width="50" height="50" fill="firebrick" />
                 <polyline points="50,50 75,25 100,50" fill="firebrick" stroke="black" stroke-width="3"/>
@@ -72,6 +77,7 @@
         <g class="street">
             <rect x="0" y="100" width="800" height="100" fill="grey" />
             
+            <!-- use lets us insert previously defined templates up in the defs section. We provide an id we want to reference, and then we can specify other properties as normal, such as x and y for the horizontal and vertical offsets. -->
             <use xlink:href="#house" x="0" y="0" />
             <use xlink:href="#house" x="100" y="0" />
             <use xlink:href="#house" x="250" y="0" />
@@ -82,17 +88,20 @@
 
     <h2>Text</h2>
     <svg width="200" height="100" viewBox="0 0 200 100">
+        <!-- the text element lets us write accessible and selectable text. -->
         <text x="10" y="20" fill="tomato" >THIS IS SOME TEXT</text>
     </svg>
 
     <h2>Linear Gradiant</h2>
     <svg width="400" height="100" viewBox="0 0 400 100">
         <defs>
+            <!-- We can define a gradient with the linearGradient tag, and providing any number of stop elements inside it. These define the different breakpoints of colour in our gradient. At 0%, the colour here is #28a, and at 100% it's #9c2. In between, it blends. Adding more stop tags lets us create more intricate gradients.-->
             <linearGradient id="colourful">
                 <stop offset="0%" stop-color="#2288aa"/>
                 <stop offset="100%" stop-color="#99cc22"/>
             </linearGradient>
         </defs>
+        <!-- We can apply the gradient by providing it as a fill for shapes and text. Note that we have to use url() to reference it correctly. -->
         <rect width="200" height="50" y="50" fill="url(#colourful)"/>
         <text x="10" y="20" fill="url(#colourful)" >THIS IS A LINEAR GRADIANT</text>
     </svg>
